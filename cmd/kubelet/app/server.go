@@ -35,6 +35,7 @@ import (
 	"github.com/coreos/go-systemd/daemon"
 	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
+	"k8s.io/component-base/logs"
 	"k8s.io/klog/v2"
 	"k8s.io/utils/mount"
 
@@ -282,6 +283,7 @@ HTTP server: The kubelet can also listen for HTTP and respond to a simple API
 	cmd.SetHelpFunc(func(cmd *cobra.Command, args []string) {
 		fmt.Fprintf(cmd.OutOrStdout(), "%s\n\n"+usageFmt, cmd.Long, cmd.UseLine(), cleanFlagSet.FlagUsagesWrapped(2))
 	})
+	logs.NewOptions().AddFlags(cleanFlagSet)
 
 	return cmd
 }
