@@ -692,7 +692,7 @@ func Test_AddCloudNode(t *testing.T) {
 				recorder:                  eventBroadcaster.NewRecorder(scheme.Scheme, v1.EventSource{Component: "cloud-node-controller"}),
 				nodeStatusUpdateFrequency: 1 * time.Second,
 			}
-			eventBroadcaster.StartLogging(klog.Infof)
+			eventBroadcaster.StartLogging(klog.InfoS)
 
 			cloudNodeController.AddCloudNode(context.TODO(), test.existingNode)
 
@@ -770,7 +770,7 @@ func TestGCECondition(t *testing.T) {
 		recorder:                  eventBroadcaster.NewRecorder(scheme.Scheme, v1.EventSource{Component: "cloud-node-controller"}),
 		nodeStatusUpdateFrequency: 1 * time.Second,
 	}
-	eventBroadcaster.StartLogging(klog.Infof)
+	eventBroadcaster.StartLogging(klog.InfoS)
 
 	cloudNodeController.AddCloudNode(context.TODO(), existingNode)
 

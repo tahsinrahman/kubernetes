@@ -79,7 +79,7 @@ func newController() (*Controller, *fakecloud.Cloud, *fake.Clientset) {
 	nodeInformer := informerFactory.Core().V1().Nodes()
 
 	broadcaster := record.NewBroadcaster()
-	broadcaster.StartLogging(klog.Infof)
+	broadcaster.StartLogging(klog.InfoS)
 	broadcaster.StartRecordingToSink(&v1core.EventSinkImpl{Interface: kubeClient.CoreV1().Events("")})
 	recorder := broadcaster.NewRecorder(scheme.Scheme, v1.EventSource{Component: "service-controller"})
 

@@ -290,7 +290,7 @@ func Test_NodesDeleted(t *testing.T) {
 				nodeMonitorPeriod: 1 * time.Second,
 			}
 
-			eventBroadcaster.StartLogging(klog.Infof)
+			eventBroadcaster.StartLogging(klog.InfoS)
 			cloudNodeLifecycleController.MonitorNodes()
 
 			updatedNode, err := clientset.CoreV1().Nodes().Get(context.TODO(), testcase.existingNode.Name, metav1.GetOptions{})
@@ -498,7 +498,7 @@ func Test_NodesShutdown(t *testing.T) {
 				nodeMonitorPeriod: 1 * time.Second,
 			}
 
-			eventBroadcaster.StartLogging(klog.Infof)
+			eventBroadcaster.StartLogging(klog.InfoS)
 			cloudNodeLifecycleController.MonitorNodes()
 
 			updatedNode, err := clientset.CoreV1().Nodes().Get(context.TODO(), testcase.existingNode.Name, metav1.GetOptions{})
